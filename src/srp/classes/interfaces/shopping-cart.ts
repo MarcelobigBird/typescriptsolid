@@ -1,7 +1,10 @@
 import { CartItem } from './cart-item';
+import { Discount } from './discount';
 
 export class ShoppingCart {
   private readonly _items: CartItem[] = [];
+
+  constructor(private readonly discount: Discount) {}
 
   public addItem(item: CartItem): void {
     this._items.push(item);
@@ -17,6 +20,10 @@ export class ShoppingCart {
 
   public total(): number {
     return +this._items.reduce((acumulator, value) => acumulator + value.price, 0).toFixed(2);
+  }
+
+  public totalWithDicount(): number {
+    return this.discount.calculate(this.total());
   }
 
   public isEmpty(): boolean {
