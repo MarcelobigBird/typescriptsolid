@@ -23,9 +23,7 @@ export class Order {
     }
 
     this._orderStatus = 'closed';
-    this.messaging.sendMessage(
-      `Seu pedido com total de R$ ${this.cart.total()} foi recebido, foi aplicado um desconto R$ ${this.cart.totalWithDicount()}`,
-    );
+    this.messaging.sendMessage(`Seu pedido com total de R$ ${this.cart.totalWithDicount()} foi recebido`);
     this.persistency.saveOrder();
     this.cart.clear();
   }

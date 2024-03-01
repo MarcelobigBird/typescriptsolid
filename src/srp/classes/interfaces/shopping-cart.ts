@@ -23,7 +23,7 @@ export class ShoppingCart {
   }
 
   public totalWithDicount(): number {
-    return this.discount.calculate(this.total());
+    return +this.discount.calculate(this.total()).toFixed(2);
   }
 
   public isEmpty(): boolean {
