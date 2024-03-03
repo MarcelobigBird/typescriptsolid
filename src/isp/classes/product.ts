@@ -1,4 +1,4 @@
-import { CartItem } from './interface/cart-item';
+import { CartItem } from './interfaces/cart-item';
 
 export class Product implements CartItem {
   constructor(

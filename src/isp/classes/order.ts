@@ -1,7 +1,7 @@
-import { OrderStatus } from './interface/order-status';
-import { Persistency } from '../services/persistency';
-import { Messaging } from '../services/messaging';
+import { OrderStatus } from './interfaces/order-status';
 import { ShoppingCart } from './shopping-cart';
+import { Messaging } from '../services/messaging';
+import { Persistency } from '../services/persistency';
 
 export class Order {
   private _orderStatus: OrderStatus = 'open';
@@ -23,7 +23,7 @@ export class Order {
     }
 
     this._orderStatus = 'closed';
-    this.messaging.sendMessage(`Seu pedido com total de R$ ${this.cart.total()} foi recebido.`);
+    this.messaging.sendMessage(`Seu pedido com total de R$ ${this.cart.totalWithDicount()} foi recebido`);
     this.persistency.saveOrder();
     this.cart.clear();
   }
